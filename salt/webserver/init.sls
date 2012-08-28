@@ -1,5 +1,6 @@
 include:
   - circus
+  - deploy
 
 app-pkgs:
   pkg.installed:
@@ -11,12 +12,15 @@ app-pkgs:
 
 webapp:
   git.latest:
-    - name: git@github.com:username/repo.git
+    - name: {{ pillar['git_repo'] }}
     - rev: {{ pillar['git_rev'] }}
     - target: /var/www/myapp/
     - force: true
     - require:
       - pkg: app-pkgs
+      - file: deploykey
+      - file: publickey
+      - file: ssh_config
 
 settings:
   file.managed:

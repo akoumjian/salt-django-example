@@ -5,4 +5,5 @@ dbuser: mydbuser
 dbpassword: myterribledbpassword
 dbhost: localhost
 dbport: 3306
-git_rev: develop
+git_rev: master
+git_repo: git@github.com:username/repo.git
